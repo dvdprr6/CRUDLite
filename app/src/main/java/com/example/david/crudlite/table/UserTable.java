@@ -7,6 +7,13 @@ public class UserTable {
     public static final String COLUMN_LAST_NAME = "last_name";
     public static final String COLUMN_EMAIL = "email";
 
+    public static final String[] ALL_COLUMNS = {
+            COLUMN_ID,
+            COLUMN_FIRST_NAME,
+            COLUMN_LAST_NAME,
+            COLUMN_EMAIL
+    };
+
     public static final String SQL_CREATE =
             "CREATE TABLE " + TABLE_USERS + "(" +
                     COLUMN_ID + " TEXT PRIMARY KEY," +
