@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.david.crudlite.table.UserTable;
 import com.example.david.crudlite.utils.Constants;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -25,11 +26,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(UserTable.SQL_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL(UserTable.SQL_DELETE);
+        onCreate(db);
     }
 }
