@@ -2,6 +2,7 @@ package com.example.david.crudlite.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -9,6 +10,7 @@ import com.example.david.crudlite.database.DatabaseHelper;
 import com.example.david.crudlite.model.UserItem;
 import com.example.david.crudlite.table.UserTable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserItemDao implements Dao<UserItem> {
@@ -22,7 +24,29 @@ public class UserItemDao implements Dao<UserItem> {
 
     @Override
     public List<UserItem> select() {
-        return null;
+        List<UserItem> allUserItems = new ArrayList<UserItem>();
+        sqliteDatabase = databaseHelper.getWritableDatabase();
+
+        Cursor cursor = sqliteDatabase.query(UserTable.TABLE_USERS, UserTable.ALL_COLUMNS,
+                null, null, null, null, null);
+
+        while(cursor.moveToNext()){
+            UserItem userItem = new UserItem();
+            String userId = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN_ID));
+            String firstName = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN_FIRST_NAME));
+            String lastName = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN_LAST_NAME));
+            String email = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN_EMAIL));
+
+            userItem.setUserId(userId);
+            userItem.setFirstName(firstName);
+            userItem.setLastName(lastName);
+            userItem.setEmail(email);
+
+            allUserItems.add(userItem);
+
+        }
+
+        return allUserItems;
     }
 
     @Override
