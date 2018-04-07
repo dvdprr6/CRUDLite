@@ -24,8 +24,8 @@ public class UserItemDao implements Dao<UserItem> {
 
     @Override
     public List<UserItem> select() {
-        List<UserItem> allUserItems = new ArrayList<UserItem>();
-        sqliteDatabase = databaseHelper.getWritableDatabase();
+        List<UserItem> allUserItems = new ArrayList();
+        sqliteDatabase = databaseHelper.getReadableDatabase();
 
         Cursor cursor = sqliteDatabase.query(UserTable.TABLE_USERS, UserTable.ALL_COLUMNS,
                 null, null, null, null, null);
