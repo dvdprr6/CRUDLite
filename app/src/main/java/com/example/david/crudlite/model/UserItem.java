@@ -1,7 +1,10 @@
 package com.example.david.crudlite.model;
 
+import android.content.ContentValues;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.example.david.crudlite.table.UserTable;
 
 import java.util.UUID;
 
@@ -47,6 +50,17 @@ public class UserItem implements Parcelable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ContentValues toValues(){
+        ContentValues values = new ContentValues(4);
+
+        values.put(UserTable.COLUMN_ID, this.userId);
+        values.put(UserTable.COLUMN_FIRST_NAME, this.firstName);
+        values.put(UserTable.COLUMN_LAST_NAME, this.lastName);
+        values.put(UserTable.COLUMN_EMAIL, this.email);
+
+        return values;
     }
 
     @Override
