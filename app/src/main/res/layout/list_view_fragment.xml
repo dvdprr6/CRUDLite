@@ -9,7 +9,8 @@
         android:id="@+id/googleMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/create_user"/>
+        android:text="@string/create_user"
+        android:onClick="creatUser"/>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
