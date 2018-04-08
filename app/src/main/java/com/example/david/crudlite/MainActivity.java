@@ -1,6 +1,5 @@
 package com.example.david.crudlite;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,13 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.david.crudlite.adapter.UserAdapter;
+import com.example.david.crudlite.clickhandler.ListClickHandler;
 import com.example.david.crudlite.dao.Dao;
 import com.example.david.crudlite.dao.UserItemDao;
 import com.example.david.crudlite.model.UserItem;
+import com.example.david.crudlite.utils.Constants;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         List<UserItem> allUserItems = userItemDao.select();
 
         Bundle args = new Bundle();
-        args.putParcelableArrayList("userItemsArray", (ArrayList<UserItem>)allUserItems);
+        args.putParcelableArrayList(Constants.USER_ITEMS_ARRAY, (ArrayList<UserItem>)allUserItems);
         placeholderFragment.setArguments(args);
 
         if(savedInstanceState == null){
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-            List<UserItem> users = getArguments().getParcelableArrayList("userItemsArray");
+            List<UserItem> users = getArguments().getParcelableArrayList(Constants.USER_ITEMS_ARRAY);
 
             ArrayAdapter<UserItem> adapter = new UserAdapter(getActivity(), R.layout.text_view, R.id.listTextView, users);
 
@@ -68,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             ListView listView = rootView.findViewById(R.id.listView);
 
             listView.setAdapter(adapter);
+
+            listView.setOnItemClickListener(new ListClickHandler());
 
             return rootView;
         }
