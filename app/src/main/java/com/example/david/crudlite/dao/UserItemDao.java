@@ -65,6 +65,9 @@ public class UserItemDao implements Dao<UserItem> {
 
     @Override
     public void update(UserItem userItem) {
+        ContentValues values = userItem.toValues();
+        sqliteDatabase = databaseHelper.getWritableDatabase();
+        sqliteDatabase.update(UserTable.TABLE_USERS, values, UserTable.COLUMN_ID + " = ?", new String[]{userItem.getUserId()});
 
     }
 
