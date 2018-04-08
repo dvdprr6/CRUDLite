@@ -53,8 +53,7 @@ public class UserUpdateActivity extends AppCompatActivity {
 
             userItemDao.update(userItem);
 
-            Intent mainActivityIntent = new Intent(this, MainActivity.class);
-            startActivity(mainActivityIntent);
+            goToMainActivity();
 
 
         }else{
@@ -64,10 +63,16 @@ public class UserUpdateActivity extends AppCompatActivity {
     }
 
     public void delete(View view){
-
+        userItemDao.delete(userItem);
+        goToMainActivity();
     }
 
     public void cancel(View view){
+        goToMainActivity();
+    }
 
+    private void goToMainActivity(){
+        Intent mainActivityIntent = new Intent(this, MainActivity.class);
+        startActivity(mainActivityIntent);
     }
 }
