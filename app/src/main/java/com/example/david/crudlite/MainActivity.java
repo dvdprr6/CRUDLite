@@ -1,6 +1,7 @@
 package com.example.david.crudlite;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void creatUser(View view){
-        
+        Intent userActivityIntent = new Intent(this, UserActivity.class);
+        startActivity(userActivityIntent);
     }
 
     private ArrayList<String> generateUserList(List<UserItem> allUserItems){
