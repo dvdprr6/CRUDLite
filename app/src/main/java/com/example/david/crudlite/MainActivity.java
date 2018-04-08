@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.david.crudlite.adapter.UserAdapter;
 import com.example.david.crudlite.dao.Dao;
 import com.example.david.crudlite.dao.UserItemDao;
 import com.example.david.crudlite.model.UserItem;
@@ -34,10 +35,8 @@ public class MainActivity extends AppCompatActivity {
         userItemDao = new UserItemDao(this);
         List<UserItem> allUserItems = userItemDao.select();
 
-        ArrayList<String> userItemsArray = generateUserList(allUserItems);
-
         Bundle args = new Bundle();
-        args.putStringArrayList("userItemsArray", userItemsArray);
+        args.putParcelableArrayList("userItemsArray", (ArrayList<UserItem>)allUserItems);
         placeholderFragment.setArguments(args);
 
         if(savedInstanceState == null){
@@ -52,23 +51,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(userActivityIntent);
     }
 
-    private ArrayList<String> generateUserList(List<UserItem> allUserItems){
-        ArrayList<String> userItemsArray = new ArrayList();
-
-        for(UserItem userItem : allUserItems){
-            StringBuffer sb = new StringBuffer();
-            String firstName = userItem.getFirstName();
-            String lastName = userItem.getLastName();
-            String email = userItem.getEmail();
-
-            sb.append("Name: " + firstName + " " + lastName + "\n" + "Email: " + email);
-
-            userItemsArray.add(sb.toString());
-        }
-
-        return userItemsArray;
-    }
-
     public static class PlaceholderFragment extends Fragment{
 
         public PlaceholderFragment(){}
@@ -77,23 +59,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-/*            String[] forecastArray = {
-                    "Today-Sunny 50/60",
-                    "Tomorrow-Cloudy 20/30",
-                    "Wednesday-Snowy 40/50",
-                    "Thursday-Rainy 20/40",
-                    "Friday-Funny 20/50",
-                    "Sat-Sunny 70/80",
-                    "Sun-Sunny 90/100",
-                    "Rick",
-                    "Morty",
-                    "Summer"
-            };
+            List<UserItem> users = getArguments().getParcelableArrayList("userItemsArray");
 
-            List<String> weekForecast = new LinkedList(Arrays.asList(forecastArray));*/
-            List<String> users = getArguments().getStringArrayList("userItemsArray");
-
-            ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), R.layout.text_view, R.id.listTextView, users);
+            ArrayAdapter<UserItem> adapter = new UserAdapter(getActivity(), R.layout.text_view, R.id.listTextView, users);
 
             View rootView = inflater.inflate(R.layout.list_view_fragment, container, false);
 
