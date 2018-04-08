@@ -73,6 +73,7 @@ public class UserItemDao implements Dao<UserItem> {
 
     @Override
     public void delete(UserItem userItem) {
-
+        sqliteDatabase = databaseHelper.getWritableDatabase();
+        sqliteDatabase.delete(UserTable.TABLE_USERS,UserTable.COLUMN_ID + " = ?", new String[]{userItem.getUserId()});
     }
 }
