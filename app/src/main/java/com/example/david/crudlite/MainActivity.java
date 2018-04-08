@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             listView.setAdapter(adapter);
 
-            listView.setOnItemClickListener(new ListClickHandler());
+            listView.setOnItemClickListener(new ListClickHandler(getActivity()));
 
             return rootView;
         }
