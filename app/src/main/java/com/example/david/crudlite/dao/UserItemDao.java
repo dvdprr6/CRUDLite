@@ -46,6 +46,8 @@ public class UserItemDao implements Dao<UserItem> {
 
         }
 
+        cursor.close();
+
         return allUserItems;
     }
 
