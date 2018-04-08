@@ -6,4 +6,6 @@
     <string name="hint_email">Email</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
 </resources>
