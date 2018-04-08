@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.example.david.crudlite.dao.Dao;
 import com.example.david.crudlite.dao.UserItemDao;
 import com.example.david.crudlite.model.UserItem;
+import com.example.david.crudlite.utils.Constants;
 
 public class UserActivity extends AppCompatActivity {
     private Dao<UserItem> userItemDao;
@@ -40,7 +41,7 @@ public class UserActivity extends AppCompatActivity {
             startActivity(mainActivityIntent);
 
         }else{
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, Constants.TOAST_FILL_FIELDS, Toast.LENGTH_LONG).show();
         }
     }
 

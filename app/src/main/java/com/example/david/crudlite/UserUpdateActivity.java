@@ -57,7 +57,7 @@ public class UserUpdateActivity extends AppCompatActivity {
 
 
         }else{
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, Constants.TOAST_FILL_FIELDS, Toast.LENGTH_LONG).show();
         }
 
     }
