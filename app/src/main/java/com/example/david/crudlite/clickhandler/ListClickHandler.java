@@ -13,11 +13,13 @@ import com.example.david.crudlite.utils.Constants;
 public class ListClickHandler implements OnItemClickListener {
     private Context context;
 
-
     public ListClickHandler(Context context){
         this.context = context;
     }
 
+    /*
+     *  When you click on a list view item it will return the user item object
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         UserItem userItem = (UserItem) parent.getItemAtPosition(position);

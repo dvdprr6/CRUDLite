@@ -13,6 +13,9 @@ import com.example.david.crudlite.table.UserTable;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * DAO layer to persist the sqlite DB
+ */
 public class UserItemDao implements Dao<UserItem> {
 
     private SQLiteOpenHelper databaseHelper;
@@ -30,6 +33,7 @@ public class UserItemDao implements Dao<UserItem> {
         Cursor cursor = sqliteDatabase.query(UserTable.TABLE_USERS, UserTable.ALL_COLUMNS,
                 null, null, null, null, null);
 
+        // Cursor to iterate through the rows
         while(cursor.moveToNext()){
             UserItem userItem = new UserItem();
             String userId = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN_ID));

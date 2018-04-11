@@ -8,6 +8,9 @@ import com.example.david.crudlite.table.UserTable;
 
 import java.util.UUID;
 
+/*
+ * This class represent data in the Users table (see UserTable class)
+ */
 public class UserItem implements Parcelable {
 
     private String userId;

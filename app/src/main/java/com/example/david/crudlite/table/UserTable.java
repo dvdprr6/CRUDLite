@@ -1,5 +1,8 @@
 package com.example.david.crudlite.table;
 
+/*
+ * Class that represents all table details and needs for user items
+ */
 public class UserTable {
     public static final String TABLE_USERS = "USERS";
     public static final String COLUMN_ID = "user_id";

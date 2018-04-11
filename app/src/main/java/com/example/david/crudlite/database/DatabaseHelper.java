@@ -16,6 +16,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /*
+     *  Create single instance of the database object.
+     */
     public static synchronized DatabaseHelper getInstance(Context context){
         if(instance == null){
             instance = new DatabaseHelper(context.getApplicationContext());

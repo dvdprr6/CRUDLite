@@ -12,6 +12,9 @@ import com.example.david.crudlite.dao.UserItemDao;
 import com.example.david.crudlite.model.UserItem;
 import com.example.david.crudlite.utils.Constants;
 
+/*
+ * Activity to create user
+ */
 public class UserActivity extends AppCompatActivity {
     private Dao<UserItem> userItemDao;
 
@@ -23,11 +26,15 @@ public class UserActivity extends AppCompatActivity {
         userItemDao = new UserItemDao(this);
     }
 
+    /*
+     *  Creat user
+     */
     public void submit(View view){
         String firstName = ((EditText)findViewById(R.id.firstNameEditText)).getText().toString();
         String lastName = ((EditText)findViewById(R.id.lastNameEditText)).getText().toString();
         String email = ((EditText)findViewById(R.id.emailEditText)).getText().toString().toLowerCase();
 
+        // Check if values have been entered in the Edit Text to prevent null pointer exceptions
         if(!firstName.equals("") && !lastName.equals("") && !email.equals("")){
             UserItem userItem = new UserItem();
             userItem.setUserId(null);

@@ -12,6 +12,9 @@ import com.example.david.crudlite.model.UserItem;
 
 import java.util.List;
 
+/*
+ *  Customer ArrayAdapter to display custom values in the text view
+ */
 public class UserAdapter extends ArrayAdapter<UserItem>{
 
 
@@ -19,6 +22,9 @@ public class UserAdapter extends ArrayAdapter<UserItem>{
         super(context, resource, textViewResourceId, objects);
     }
 
+    /*
+     * Generate List View based on details in user item object
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup Parent){
 

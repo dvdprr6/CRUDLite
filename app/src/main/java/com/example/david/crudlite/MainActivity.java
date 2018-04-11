@@ -21,6 +21,9 @@ import com.example.david.crudlite.utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ *  Displays all users in a fragment using list view
+ */
 public class MainActivity extends AppCompatActivity {
     private Dao<UserItem> userItemDao;
 
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         userItemDao = new UserItemDao(this);
         List<UserItem> allUserItems = userItemDao.select();
 
+        // Use this bundle implementation to pass objects to the fragment
         Bundle args = new Bundle();
         args.putParcelableArrayList(Constants.USER_ITEMS_ARRAY, (ArrayList<UserItem>)allUserItems);
         placeholderFragment.setArguments(args);
@@ -45,11 +49,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void creatUser(View view){
+    /*
+     *  Go to activity to create a new user
+     */
+    public void createUser(View view){
         Intent userActivityIntent = new Intent(this, UserActivity.class);
         startActivity(userActivityIntent);
     }
 
+    /*
+     *  Generates fragment to display users
+     */
     public static class PlaceholderFragment extends Fragment{
 
         public PlaceholderFragment(){}
@@ -60,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             List<UserItem> users = getArguments().getParcelableArrayList(Constants.USER_ITEMS_ARRAY);
 
+            // User custom adapter to pass a list of user item objects
             ArrayAdapter<UserItem> adapter = new UserAdapter(getActivity(), R.layout.text_view, R.id.listTextView, users);
 
             View rootView = inflater.inflate(R.layout.list_view_fragment, container, false);
@@ -68,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
             listView.setAdapter(adapter);
 
+            // Click on a text view item to enter the activity to update user
             listView.setOnItemClickListener(new ListClickHandler(getActivity()));
 
             return rootView;
