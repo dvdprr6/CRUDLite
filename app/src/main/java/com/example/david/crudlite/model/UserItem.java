@@ -11,7 +11,7 @@ import java.util.UUID;
 /*
  * This class represent data in the Users table (see UserTable class)
  */
-public class UserItem implements Parcelable {
+public class UserItem extends Item {
 
     private String userId;
     private String firstName;
@@ -20,11 +20,13 @@ public class UserItem implements Parcelable {
 
     public UserItem(){}
 
-    public String getUserId() {
+    @Override
+    public String getId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    @Override
+    public void setId(String userId) {
         if(userId == null){
             userId = UUID.randomUUID().toString();
         }

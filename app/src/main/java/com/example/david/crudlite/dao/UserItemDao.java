@@ -41,7 +41,7 @@ public class UserItemDao implements Dao<UserItem> {
             String lastName = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN_LAST_NAME));
             String email = cursor.getString(cursor.getColumnIndex(UserTable.COLUMN_EMAIL));
 
-            userItem.setUserId(userId);
+            userItem.setId(userId);
             userItem.setFirstName(firstName);
             userItem.setLastName(lastName);
             userItem.setEmail(email);
@@ -71,13 +71,13 @@ public class UserItemDao implements Dao<UserItem> {
     public void update(UserItem userItem) {
         ContentValues values = userItem.toValues();
         sqliteDatabase = databaseHelper.getWritableDatabase();
-        sqliteDatabase.update(UserTable.TABLE_USERS, values, UserTable.COLUMN_ID + " = ?", new String[]{userItem.getUserId()});
+        sqliteDatabase.update(UserTable.TABLE_USERS, values, UserTable.COLUMN_ID + " = ?", new String[]{userItem.getId()});
 
     }
 
     @Override
     public void delete(UserItem userItem) {
         sqliteDatabase = databaseHelper.getWritableDatabase();
-        sqliteDatabase.delete(UserTable.TABLE_USERS,UserTable.COLUMN_ID + " = ?", new String[]{userItem.getUserId()});
+        sqliteDatabase.delete(UserTable.TABLE_USERS,UserTable.COLUMN_ID + " = ?", new String[]{userItem.getId()});
     }
 }

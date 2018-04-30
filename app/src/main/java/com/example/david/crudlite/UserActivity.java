@@ -37,7 +37,7 @@ public class UserActivity extends AppCompatActivity {
         // Check if values have been entered in the Edit Text to prevent null pointer exceptions
         if(!firstName.equals("") && !lastName.equals("") && !email.equals("")){
             UserItem userItem = new UserItem();
-            userItem.setUserId(null);
+            userItem.setId(null);
             userItem.setFirstName(firstName);
             userItem.setLastName(lastName);
             userItem.setEmail(email);
