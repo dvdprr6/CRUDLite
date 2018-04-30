@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.david.crudlite.dao.Dao;
 import com.example.david.crudlite.dao.DaoFactory;
-import com.example.david.crudlite.dao.UserItemDao;
 import com.example.david.crudlite.model.UserItem;
 import com.example.david.crudlite.utils.Constants;
 

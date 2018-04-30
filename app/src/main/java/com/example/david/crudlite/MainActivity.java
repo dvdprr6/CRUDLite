@@ -13,9 +13,7 @@ import android.widget.ListView;
 
 import com.example.david.crudlite.adapter.UserAdapter;
 import com.example.david.crudlite.clickhandler.ListClickHandler;
-import com.example.david.crudlite.dao.Dao;
 import com.example.david.crudlite.dao.DaoFactory;
-import com.example.david.crudlite.dao.UserItemDao;
 import com.example.david.crudlite.model.UserItem;
 import com.example.david.crudlite.utils.Constants;
 
