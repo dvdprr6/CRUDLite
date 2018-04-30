@@ -21,7 +21,7 @@ public class UserItemDao implements Dao<UserItem> {
     private SQLiteOpenHelper databaseHelper;
     private SQLiteDatabase sqliteDatabase;
 
-    public UserItemDao(Context context){
+    UserItemDao(Context context){
         databaseHelper = DatabaseHelper.getInstance(context);
     }
 

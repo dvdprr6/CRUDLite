@@ -57,6 +57,7 @@ public class UserItem extends Item {
         this.email = email;
     }
 
+    @Override
     public ContentValues toValues(){
         ContentValues values = new ContentValues(4);
 

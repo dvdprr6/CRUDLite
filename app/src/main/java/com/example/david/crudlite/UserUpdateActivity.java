@@ -8,20 +8,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.david.crudlite.dao.Dao;
+import com.example.david.crudlite.dao.DaoFactory;
 import com.example.david.crudlite.dao.UserItemDao;
 import com.example.david.crudlite.model.UserItem;
 import com.example.david.crudlite.utils.Constants;
 
 public class UserUpdateActivity extends AppCompatActivity {
     private UserItem userItem;
-    private Dao<UserItem> userItemDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_update);
-
-        userItemDao = new UserItemDao(this);
 
         Intent intent = getIntent();
 
@@ -51,7 +49,7 @@ public class UserUpdateActivity extends AppCompatActivity {
             userItem.setEmail(email);
 
 
-            userItemDao.update(userItem);
+            DaoFactory.getUserItemDao(this).update(userItem);
 
             goToMainActivity();
 
@@ -63,7 +61,7 @@ public class UserUpdateActivity extends AppCompatActivity {
     }
 
     public void delete(View view){
-        userItemDao.delete(userItem);
+        DaoFactory.getUserItemDao(this).delete(userItem);
         goToMainActivity();
     }
 

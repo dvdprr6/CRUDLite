@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.david.crudlite.dao.Dao;
+import com.example.david.crudlite.dao.DaoFactory;
 import com.example.david.crudlite.dao.UserItemDao;
 import com.example.david.crudlite.model.UserItem;
 import com.example.david.crudlite.utils.Constants;
@@ -16,14 +17,11 @@ import com.example.david.crudlite.utils.Constants;
  * Activity to create user
  */
 public class UserActivity extends AppCompatActivity {
-    private Dao<UserItem> userItemDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-
-        userItemDao = new UserItemDao(this);
     }
 
     /*
@@ -42,7 +40,7 @@ public class UserActivity extends AppCompatActivity {
             userItem.setLastName(lastName);
             userItem.setEmail(email);
 
-            userItemDao.insert(userItem);
+            DaoFactory.getUserItemDao(this).insert(userItem);
 
             Intent mainActivityIntent = new Intent(this, MainActivity.class);
             startActivity(mainActivityIntent);
